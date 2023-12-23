@@ -1,0 +1,7 @@
+{
+  "name": "memory-cards-ionic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
