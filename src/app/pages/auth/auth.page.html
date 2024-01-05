@@ -1,0 +1,44 @@
+<shared-header title="Login"></shared-header>
+
+<ion-content>
+
+  <div class="d-flex-center">
+
+    <form
+      [formGroup]="myForm"
+      (ngSubmit)="onSubmit()"
+      class="auth-form"
+      (keypress.enter)="onSubmit()">
+
+      <shared-logo></shared-logo>
+
+      <shared-custom-input
+        [control]="getControl('name')"
+        label="Nombre"
+        type="text"
+        autocomplete="name"
+        icon="person-outline">
+      </shared-custom-input>
+
+      <div
+        *ngIf="isValidField('name')"
+        class="validators">
+        <div>
+          {{ getFieldError('name') }}
+        </div>
+      </div>
+
+      <ion-button
+        type="submit"
+        class="submit"
+        expand="block"
+        [disabled]="myForm.invalid">
+        Jugar
+        <ion-icon slot="end" name="log-in-outline"></ion-icon>
+      </ion-button>
+
+    </form>
+
+  </div>
+
+</ion-content>

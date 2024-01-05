@@ -1,0 +1,74 @@
+<shared-header [title]="user.name" [selectMenu]="selectMenu"></shared-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-grid>
+    <ion-row class="ion-justify-content-end">
+      <ion-col size="12" class="ion-text-end">
+        <ion-chip color="primary">
+          <ion-icon name="locate-outline" color="primary"></ion-icon>
+          <ion-label>Puntos: {{ user.puntos }}</ion-label>
+        </ion-chip>
+        <ion-chip color="primary">
+          <ion-icon name="medal-outline" color="primary"></ion-icon>
+          <ion-label>Máximo {{ user.max }}</ion-label>
+        </ion-chip>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" class="ion-text-center">
+        @if ( cards.length ) {
+          @if ( showCards ) {
+            Memorice las cartas. Restan: {{ timeCounter() }} seg.
+          }
+          @else {
+            ¿Donde esta el numero {{ numCard }}?
+          }
+        } @else {
+          Click en jugar para iniciar un nuevo juego
+        }
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+  <ion-grid class="">
+    <ion-row class="ion-justify-content-center">
+      @for (card of cards; track $index) {
+        <ion-col size="4" class="ion-text-center">
+          <div class="card" [ngClass]="card.active ? 'active' : ''" (click)="activate(card)">
+            <div class="back"></div>
+            <div
+              class="face"
+              [ngClass]="card.success ? 'success' : '' "
+              [ngClass]="card.fail ? 'fail' : '' ">
+              {{ card.value }}
+            </div>
+          </div>
+        </ion-col>
+      }
+    </ion-row>
+
+    <ion-row>
+      <ion-col class="ion-text-center">
+        @if ( !cards.length ) {
+          <ion-button (click)="iniGame()">
+            Jugar
+            <ion-icon slot="start" name="play"></ion-icon>
+          </ion-button>
+        }
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="signOut()">
+      <ion-icon name="log-out-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

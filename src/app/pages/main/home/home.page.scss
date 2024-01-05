@@ -1,0 +1,42 @@
+
+
+.card {
+  height: 140px;
+  margin: 0.5rem;
+  position: relative;
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+}
+
+.card.active {
+  transform: rotateY(180deg);
+}
+
+.card div {
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  backface-visibility: hidden;
+  pointer-events: none;
+}
+
+.card .face {
+  background: var(--ion-color-primary);
+  transform: rotateY(180deg);
+  color: white;
+  font-size: 6rem;
+  &.fail {
+    background: var(--ion-color-danger);
+  }
+  &.success {
+    background: var(--ion-color-success);
+  }
+}
+
+.card .back {
+  border: 2px solid var(--ion-color-primary);
+}

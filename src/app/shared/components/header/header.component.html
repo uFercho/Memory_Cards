@@ -1,0 +1,35 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar color="primary">
+
+    <ion-buttons slot="start">
+      <ion-back-button *ngIf="backButton" [defaultHref]="backButton"></ion-back-button>
+    </ion-buttons>
+
+    <ion-icon
+      slot="start"
+      class="user-icon ion-margin-start"
+      name="person-circle">
+    </ion-icon>
+
+    <ion-title
+      class="menu-title">
+      <strong>{{ title }}</strong>
+      <div class="admin">G A M E R</div>
+    </ion-title>
+
+    <ion-select
+      *ngIf="selectMenu?.length"
+      slot="end"
+      label="Nivel"
+      [formControl]="dificultad"
+      class="ion-margin-end">
+      <ion-select-option
+        *ngFor="let menu of selectMenu"
+        [value]="menu.value">
+        {{ menu.label }}
+      </ion-select-option>
+    </ion-select>
+
+
+  </ion-toolbar>
+</ion-header>
